@@ -1,0 +1,64 @@
+@import "../../base.scss";
+
+
+.hero{
+    padding: 30px 30px 40px;
+    background-color: $color-green;
+    display: flex;
+    justify-content: center;
+
+
+    .inner{
+
+       width:100%;
+       max-width: 950px;
+       position: relative;
+       padding-top: 2rem;
+
+      .title{
+        @include font-Markazi;
+        color: $color-yellow;
+        font-size: 75px;
+        line-height: 0.8;
+      }
+
+      .subtitle{
+        @include font-Markazi;
+        font-size: 45px;
+        color:$color-highlignt-light;
+        margin-bottom: 20px;
+      }
+
+      .description{
+        @include font-Karla;
+        font-size: 20px;
+        color:$color-highlignt-light;
+        width:100%;
+        max-width: 400px;
+        margin-bottom: 40px;
+
+      }
+
+
+      .image{
+        width: 400px;
+        height: 450px;
+        position: absolute;
+        overflow: hidden;
+        border-radius: 16px;
+
+        right: -2rem;
+        top:-1rem;
+
+        img{
+            position: relative;
+            bottom: 50px;
+            width: 100%;
+        }
+    }
+
+    }
+}
+
+
+

@@ -1,0 +1,9 @@
+@import "../../base.scss";
+
+.footer{
+    color: $color-highlignt-light;
+    padding: 50px;
+    background-color: $color-green;
+
+    flex-shrink: 0;
+}

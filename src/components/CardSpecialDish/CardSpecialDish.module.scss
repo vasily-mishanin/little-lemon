@@ -1,0 +1,59 @@
+@import "../../base.scss";
+
+.card {
+  @include font-Karla;
+  width: 290px;
+  height: 440px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background-color: $color-highlignt-light;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  overflow: hidden;
+
+  .image {
+    width: 100%;
+    height: 185px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-position: center;
+    }
+  }
+
+  .content {
+    padding: 20px;
+
+    .details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+
+      .title {
+        @include font-Markazi;
+        font-size: 24px;
+        color: #000000;
+      }
+
+      .price {
+        font-size: 16px;
+        color: $color-second-dark;
+        font-weight: bold;
+      }
+    }
+
+    .description {
+      font-size: 16px;
+      color: $color-green;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta {
+    }
+  }
+}
