@@ -14,3 +14,8 @@ export interface IPerson {
     nickname: string;
     review: string;
 }
+
+export interface ILink {
+    path: string;
+    text: string;
+}

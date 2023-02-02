@@ -1,0 +1,30 @@
+@import "../../base.scss";
+
+.nav {
+  @include font-Karla;
+
+  .list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+
+    .item {
+      font-size: 20px;
+      font-weight: 500;
+
+      .link {
+        color: $color-highlignt-light;
+
+        &:hover {
+          color: $color-yellow;
+        }
+      }
+
+      .activeLink {
+        color: $color-yellow;
+        text-decoration: underline;
+      }
+    }
+  }
+}

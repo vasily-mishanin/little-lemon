@@ -1,3 +1,4 @@
+import About from "../../components/About/About";
 import Hero from "../../components/Hero/Hero";
 import Specials from "../../components/Specials/Specials";
 import Testimonials from "../../components/Testimonials/Testimonials";
@@ -9,6 +10,7 @@ export default function Home() {
       <Hero />
       <Specials />
       <Testimonials />
+      <About />
     </main>
   );
 }

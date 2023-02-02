@@ -1,16 +1,15 @@
-.header{
-    padding: 40px;
+.header {
+  display: flex;
+  justify-content: center;
+
+  .inner {
+    height: 110px;
+    width: 100%;
+    max-width: 950px;
+
     display: flex;
-    justify-content: center;
-  
-    .inner{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        gap: 2rem;
-        width:100%;
-        max-width: 950px;
-    }
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
 }
-
