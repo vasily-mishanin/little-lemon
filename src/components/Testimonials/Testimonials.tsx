@@ -46,7 +46,7 @@ export default function Testimonials() {
       </span>
       <ul className={classes.list}>
         {testimonials.map((testimonial) => (
-          <li>
+          <li key={testimonial.id}>
             <CardTestimonial
               id={testimonial.id}
               rating={testimonial.rating}

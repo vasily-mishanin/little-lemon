@@ -1,9 +1,41 @@
 @import "../../base.scss";
 
-.footer{
-    color: $color-highlignt-light;
-    padding: 50px;
-    background-color: $color-green;
+.footer {
+  @include font-Karla;
+  padding: 110px 0;
 
-    flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+
+  background-color: $color-green;
+
+  color: $color-highlignt-light;
+  font-size: 20px;
+
+  .inner {
+    display: flex;
+    gap: 100px;
+
+    width: 100%;
+    max-width: 950px;
+
+    .logo {
+    }
+
+    .info {
+      margin-left: 70px;
+
+      .socials {
+        margin-bottom: 35px;
+      }
+
+      .contacts {
+        a:hover {
+          color: $color-yellow;
+        }
+      }
+    }
+  }
 }

@@ -21,7 +21,7 @@ export default function Navigation() {
 
         <li className={classes.item}>
           <NavLink
-            to="/#about"
+            to="#about"
             className={({ isActive }) =>
               isActive && window.location.hash === "#about"
                 ? classes.activeLink

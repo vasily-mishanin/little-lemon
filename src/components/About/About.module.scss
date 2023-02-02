@@ -1,0 +1,54 @@
+@import "../../base.scss";
+
+.about {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 40px;
+
+  .inner {
+    position: relative;
+    width: 100%;
+    max-width: 950px;
+    height: 620px;
+
+    .text {
+      width: 370px;
+
+      .title {
+        @include font-Markazi;
+        font-size: 75px;
+        font-weight: 700;
+      }
+
+      .subtitle {
+        @include font-Markazi;
+        color: $color-highlignt-dark;
+        font-size: 60px;
+        font-weight: bolder;
+        margin-bottom: 1rem;
+      }
+
+      .description {
+        @include font-Karla;
+        font-size: 20px;
+        font-weight: 500;
+        text-align: justify;
+      }
+    }
+
+    .images {
+      .image1 {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+
+      .image2 {
+        position: absolute;
+        bottom: 50px;
+        right: 180px;
+      }
+    }
+  }
+}

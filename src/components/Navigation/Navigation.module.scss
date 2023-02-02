@@ -1,37 +1,28 @@
-// @font-face {
-//     font-family: "Karla";   /*Can be any text*/
-//     src: local("Karla-VariableFont_wght"),
-//       url("../../assets/fonts/Karla/Karla-VariableFont_wght.ttf") format("truetype");
-//   }
+@import "../../base.scss";
 
-@import  '../../base.scss';
-
-
-.nav{
-   @include font-Karla;
-    font-weight: bold;
+.nav {
+  @include font-Karla;
+  font-weight: bold;
 }
 
-.list{
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-
+.list {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
 }
 
- .item{}
+.item {
+}
 
- .link{
+.link {
+  color: black;
 
-    color: black;
+  &:hover {
+    color: $color-yellow;
+  }
+}
 
-
-    &:hover{
-        color: salmon;
-    }
- }
-
- .activeLink{
-    color: salmon;
-    text-decoration: underline;
- }
+.activeLink {
+  color: $color-yellow;
+  text-decoration: underline;
+}
