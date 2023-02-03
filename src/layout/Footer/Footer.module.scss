@@ -29,9 +29,15 @@
 
       .socials {
         margin-bottom: 35px;
+        a {
+          margin-left: 0.5rem;
+        }
       }
 
       .contacts {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
         a:hover {
           color: $color-yellow;
         }

@@ -4,18 +4,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 40px;
 
   background-color: $color-second-light;
   padding: 110px 0;
-}
 
-.list {
-  display: flex;
-  gap: 50px;
-}
-
-.arrow {
-  cursor: pointer;
+  .inner {
+    width: 100%;
+    max-width: 790px; // for Carousel
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+  }
 }

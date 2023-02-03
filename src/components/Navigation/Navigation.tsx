@@ -1,84 +1,59 @@
+import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import classes from "./Navigation.module.scss";
+import { scrollToSection } from "../../helpers/helpers";
+import { ILink } from "../../model/types";
 
-export default function Navigation() {
+const isCertainLinkActive = (path: string) => {
+  const hash = window.location.hash;
+  const urlContainsHash = hash === path.substring(1);
+  const thereIsNoHashInUrl = hash === "";
+  const pathsAreAqual = path === window.location.pathname;
+  if (urlContainsHash || (thereIsNoHashInUrl && pathsAreAqual)) {
+    return true;
+  }
+  return false;
+};
+
+type TNavigationProps = {
+  links: ILink[];
+  direction: "row" | "column";
+  color?: string;
+  gap?: string;
+  weight?: string;
+};
+
+export default function Navigation({
+  links,
+  direction,
+  gap,
+  color,
+  weight,
+}: TNavigationProps) {
   return (
     <nav className={classes.nav}>
-      <ul className={classes.list}>
-        <li className={classes.item}>
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive && window.location.hash === ""
-                ? classes.activeLink
-                : classes.link
-            }
-          >
-            {" "}
-            Home{" "}
-          </NavLink>
-        </li>
-
-        <li className={classes.item}>
-          <NavLink
-            to="#about"
-            className={({ isActive }) =>
-              isActive && window.location.hash === "#about"
-                ? classes.activeLink
-                : classes.link
-            }
-          >
-            About
-          </NavLink>
-        </li>
-
-        <li className={classes.item}>
-          <NavLink
-            to="menu"
-            className={({ isActive }) =>
-              isActive ? classes.activeLink : classes.link
-            }
-          >
-            {" "}
-            Menu{" "}
-          </NavLink>
-        </li>
-
-        <li className={classes.item}>
-          <NavLink
-            to="reservation"
-            className={({ isActive }) =>
-              isActive ? classes.activeLink : classes.link
-            }
-          >
-            {" "}
-            Reservations{" "}
-          </NavLink>
-        </li>
-
-        <li className={classes.item}>
-          <NavLink
-            to="order"
-            className={({ isActive }) =>
-              isActive ? classes.activeLink : classes.link
-            }
-          >
-            {" "}
-            Order Online{" "}
-          </NavLink>
-        </li>
-
-        <li className={classes.item}>
-          <NavLink
-            to="login"
-            className={({ isActive }) =>
-              isActive ? classes.activeLink : classes.link
-            }
-          >
-            {" "}
-            Login{" "}
-          </NavLink>
-        </li>
+      <ul
+        className={classes.list}
+        style={{ flexDirection: direction, gap: gap }}
+      >
+        {links.map((link) => (
+          <li className={classes.item} key={link.path}>
+            <NavLink
+              to={link.path}
+              onClick={() => {
+                if (link.anchor) scrollToSection(link.anchor);
+              }}
+              className={({ isActive }) =>
+                isActive && isCertainLinkActive(link.path)
+                  ? classes.activeLink
+                  : classes.link
+              }
+              style={{ color: color, fontWeight: weight }}
+            >
+              {link.text}
+            </NavLink>
+          </li>
+        ))}
       </ul>
     </nav>
   );

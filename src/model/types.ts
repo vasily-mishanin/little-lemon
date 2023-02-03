@@ -18,4 +18,5 @@ export interface IPerson {
 export interface ILink {
     path: string;
     text: string;
+    anchor?:string;
 }
