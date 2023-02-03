@@ -22,7 +22,7 @@
 
         .content {
           display: flex;
-          gap: 50px;
+          //gap: 50px;
           transition: all 250ms linear;
           -ms-overflow-style: none; /* hide scrollbar in IE and Edge */
           scrollbar-width: none; /* hide scrollbar in Firefox */
@@ -51,7 +51,7 @@
 
   img {
     width: 15px; // *
-    transition: all 0.3s ease;
+    transition: all 2s ease;
   }
 
   &:hover {
