@@ -4,7 +4,7 @@ import ChefAndCoImg from "../../assets/images/chef-and-co.png";
 
 export default function About() {
   return (
-    <section className={classes.about}>
+    <section className={classes.about} id="about">
       <div className={classes.inner}>
         <div className={classes.text}>
           <h1 className={classes.title}>Little Lemon</h1>

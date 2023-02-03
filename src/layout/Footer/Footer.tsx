@@ -1,59 +1,64 @@
 import { useLocation } from "react-router";
-import NavigationFooter from "../../components/NavigationFooter/NavigationFooter";
 import classes from "./Footer.module.scss";
 import LogoFooter from "../../assets/images/logo-footer.svg";
 import FacebookIcon from "../../assets/icons/facebook.svg";
 import InstagramIcon from "../../assets/icons/instagram.svg";
 import TelegramIcon from "../../assets/icons/telegram.svg";
-
-const linksFooter = [
-  { path: "/", text: "Home" },
-  { path: "#about", text: "About" },
-  { path: "menu", text: "Menu" },
-  { path: "reservation", text: "Reservations" },
-  { path: "order", text: "Order Online" },
-  { path: "login", text: "Login" },
-];
+import Navigation from "../../components/Navigation/Navigation";
+import { siteLinks } from "../../model/constants";
 
 export default function Footer() {
   const { pathname } = useLocation();
-  console.log("Footer");
 
-  return pathname === "/" ? (
-    <footer className={classes.footer}>
-      <div className={classes.inner}>
-        <div className={classes.logo}>
-          <img src={LogoFooter} alt="little lemon logo" />
-        </div>
-
-        <NavigationFooter links={linksFooter} />
-
-        <div className={classes.info}>
-          <div className={classes.socials}>
-            <a href="https://www.facebook.com/thelittlelemonkitchen/">
-              <img src={FacebookIcon} alt="facebook" />
-            </a>
-            <a href="https://www.instagram.com/littlelemongtx/?hl=en">
-              <img src={InstagramIcon} alt="instagram" />
-            </a>
-            <a href="https://web.telegram.org">
-              <img src={TelegramIcon} alt="telegram" />
-            </a>
+  if (pathname === "/") {
+    return (
+      <footer className={classes.footer}>
+        <div className={classes.inner}>
+          <div className={classes.logo}>
+            <img src={LogoFooter} alt="little lemon logo" />
           </div>
 
-          <div className={classes.contacts}>
-            <address>Address: Michigan Ave Suite L3-03, Chicago, IL </address>
-            <p>
-              <a href="tel:+13129515923">Phone number: +13129515923</a>
-            </p>
-            <p>
-              <a href="mailto:littlelemon@icloud.com">
-                Email: littlelemon@icloud.com
+          <Navigation
+            links={siteLinks}
+            direction="column"
+            gap="0.3rem"
+            color="#edefee"
+            weight="500"
+          />
+
+          <div className={classes.info}>
+            <div className={classes.socials}>
+              <a href="https://www.facebook.com/thelittlelemonkitchen/">
+                <img src={FacebookIcon} alt="facebook" />
               </a>
-            </p>
+              <a href="https://www.instagram.com/littlelemongtx/?hl=en">
+                <img src={InstagramIcon} alt="instagram" />
+              </a>
+              <a href="https://web.telegram.org">
+                <img src={TelegramIcon} alt="telegram" />
+              </a>
+            </div>
+
+            <div className={classes.contacts}>
+              <a href="https://goo.gl/maps/fBzX8uLvbwXE22UL6" target="_blank">
+                <address>
+                  Address: Michigan Ave Suite L3-03, Chicago, IL{" "}
+                </address>
+              </a>
+              <p>
+                <a href="tel:+13129515923">Phone number: +13129515923</a>
+              </p>
+              <p>
+                <a href="mailto:littlelemon@icloud.com">
+                  Email: littlelemon@icloud.com
+                </a>
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </footer>
-  ) : null;
+      </footer>
+    );
+  }
+
+  return null;
 }

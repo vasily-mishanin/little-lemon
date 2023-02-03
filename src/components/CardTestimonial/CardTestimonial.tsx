@@ -1,4 +1,5 @@
 import { IPerson } from "../../model/types";
+import RatingBadge from "../RatingBadge/RatingBadge";
 import classes from "./CardTestimonial.module.scss";
 
 export default function CardTestimonial({
@@ -11,8 +12,9 @@ export default function CardTestimonial({
 }: IPerson) {
   return (
     <article className={classes.card}>
-      <span className={classes.rating}>Rating</span>
-
+      <span className={classes.rating}>
+        <RatingBadge number={rating} />
+      </span>
       <div className={classes.avatar}>
         <img src={avatar} alt={name} />
       </div>
