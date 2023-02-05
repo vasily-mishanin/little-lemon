@@ -3,7 +3,6 @@ import classes from "./Specials.module.scss";
 import GreekSalad from "../../assets/images/greek salad.jpg";
 import Bruchetta from "../../assets/images/bruchetta.svg";
 import LemonDessert from "../../assets/images/lemon dessert.jpg";
-import CardSpecialDish from "../CardSpecialDish/CardSpecialDish";
 import ListSpecials from "../ListSpecials/ListSpecials";
 
 const data = [
@@ -39,7 +38,7 @@ export default function Specials() {
       <div className={classes.inner}>
         <header className={classes.header}>
           <h2 className={classes.title}>This week specials! </h2>
-          <ButtonCTA text="Online Menu" />
+          <ButtonCTA text="Online Menu" link="/menu" />
         </header>
 
         <ListSpecials dishes={data} />

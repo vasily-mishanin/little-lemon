@@ -1,18 +1,23 @@
-@import  '../../base.scss';
+@import "../../base.scss";
 
+.button {
+  background-color: $color-yellow;
+  @include font-Karla;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23px;
+  color: #000000;
+  padding: 13px 20px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  width: 200px;
+  height: 50px;
+  text-align: center;
+  transition: all 0.1s ease-in;
 
-.button{
-background-color: $color-yellow;
-@include font-Karla;
-font-style: normal;
-font-weight: 700;
-font-size: 20px;
-line-height: 23px;
-color: #000000;
-padding: 13px 20px;
-border-radius: 5px;
-border: none;
-outline: none;
-width: 200px;
-height: 50px;
+  &:hover {
+    box-shadow: 0px 0px 10px 0 $color-yellow;
+  }
 }

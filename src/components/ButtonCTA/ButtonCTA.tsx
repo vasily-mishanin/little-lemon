@@ -1,5 +1,16 @@
+import { Link } from "react-router-dom";
 import classes from "./ButtonCTA.module.scss";
 
-export default function ButtonCTA({ text }: { text: string }) {
-  return <button className={classes.button}>{text}</button>;
+export default function ButtonCTA({
+  text,
+  link,
+}: {
+  text: string;
+  link: string;
+}) {
+  return (
+    <Link className={classes.button} to={link}>
+      {text}
+    </Link>
+  );
 }
