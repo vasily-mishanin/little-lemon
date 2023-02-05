@@ -16,6 +16,7 @@
 
   .inner {
     display: flex;
+    justify-content: center;
     gap: 100px;
 
     width: 100%;
@@ -42,6 +43,32 @@
           color: $color-yellow;
         }
       }
+    }
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .footer {
+    padding: 90px 30px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .footer {
+    .inner {
+      gap: 70px;
+
+      .info {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .footer {
+    .inner {
+      flex-wrap: wrap;
     }
   }
 }

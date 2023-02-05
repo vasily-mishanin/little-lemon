@@ -2,6 +2,7 @@ import { IPerson } from "../../model/types";
 import classes from "./Testimonials.module.scss";
 import CardTestimonial from "../CardTestimonial/CardTestimonial";
 import Carousel from "../Carousel/Carousel";
+import "./carouselContainer.scss";
 
 import Sara from "../../assets/images/sara lopez 1.png";
 import Alex from "../../assets/images/alex 1.png";
@@ -9,6 +10,7 @@ import Gulia from "../../assets/images/gulia 1.png";
 import James from "../../assets/images/james.jpeg";
 import Margo from "../../assets/images/margo.jpeg";
 import Billy from "../../assets/images/billy.jpeg";
+import { useEffect, useState } from "react";
 
 const testimonials: IPerson[] = [
   {
@@ -66,7 +68,13 @@ const testimonials: IPerson[] = [
 ];
 
 export default function Testimonials() {
-  //style={{ transform: "translateX(100px)" }}
+  const [carouselContainerWidth, setCarouselContainerWidth] = useState(0);
+
+  useEffect(() => {
+    const container = document.querySelector(".carousel-container");
+    const containerWidth = window.getComputedStyle(container as Element).width;
+    setCarouselContainerWidth(parseInt(containerWidth));
+  }, []);
 
   const testimonialsElements = testimonials.map((testimonial) => (
     <CardTestimonial
@@ -82,17 +90,15 @@ export default function Testimonials() {
 
   return (
     <section className={classes.testimonials}>
-      <div className={classes.inner}>
-        <Carousel cardWidth={230} gap={50}>
+      <div className={classes.inner + " carousel-container"}>
+        <Carousel
+          containerWidth={carouselContainerWidth}
+          cardWidth={230}
+          gap={50}
+        >
           {testimonialsElements}
         </Carousel>
       </div>
     </section>
   );
-}
-
-{
-  /* <img src="https://via.placeholder.com/230x230" alt="placeholder" />
-          <img src="https://via.placeholder.com/230x230" alt="placeholder" />
-          <img src="https://via.placeholder.com/230x230" alt="placeholder" /> */
 }

@@ -1,19 +1,7 @@
-import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import classes from "./Navigation.module.scss";
 import { scrollToSection } from "../../helpers/helpers";
 import { ILink } from "../../model/types";
-
-const isCertainLinkActive = (path: string) => {
-  const hash = window.location.hash;
-  const urlContainsHash = hash === path.substring(1);
-  const thereIsNoHashInUrl = hash === "";
-  const pathsAreAqual = path === window.location.pathname;
-  if (urlContainsHash || (thereIsNoHashInUrl && pathsAreAqual)) {
-    return true;
-  }
-  return false;
-};
 
 type TNavigationProps = {
   links: ILink[];
@@ -21,6 +9,8 @@ type TNavigationProps = {
   color?: string;
   gap?: string;
   weight?: string;
+  display?: string;
+  fontSize?: string;
 };
 
 export default function Navigation({
@@ -29,9 +19,23 @@ export default function Navigation({
   gap,
   color,
   weight,
+  display,
+  fontSize,
 }: TNavigationProps) {
+  const isCertainLinkActive = (link: ILink) => {
+    if (window.location.pathname === "/") {
+      return (
+        link.anchor === window.location.hash.substring(1) ||
+        (!link.anchor && window.location.hash === "")
+      );
+    }
+    return link.path === window.location.pathname.substring(1);
+  };
+
+  console.log(links);
+
   return (
-    <nav className={classes.nav}>
+    <nav className={classes.nav} style={{ display, fontSize }}>
       <ul
         className={classes.list}
         style={{ flexDirection: direction, gap: gap }}
@@ -42,9 +46,10 @@ export default function Navigation({
               to={link.path}
               onClick={() => {
                 if (link.anchor) scrollToSection(link.anchor);
+                if (link.path === "/") scrollToSection("header");
               }}
               className={({ isActive }) =>
-                isActive && isCertainLinkActive(link.path)
+                isActive && isCertainLinkActive(link)
                   ? classes.activeLink
                   : classes.link
               }

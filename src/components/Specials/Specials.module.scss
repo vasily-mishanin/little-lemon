@@ -25,3 +25,41 @@
     }
   }
 }
+
+@media screen and (max-width: 820px) {
+  .specials {
+    padding: 30px;
+    .inner {
+      .header {
+        .title {
+          font-size: 50px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .specials {
+    .inner {
+      .header {
+        .title {
+          font-size: 40px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .specials {
+    .inner {
+      .header {
+        flex-direction: column-reverse;
+        .title {
+          font-size: 40px;
+        }
+      }
+    }
+  }
+}

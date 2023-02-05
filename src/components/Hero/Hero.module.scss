@@ -1,64 +1,97 @@
 @import "../../base.scss";
 
+.hero {
+  padding: 30px 30px 40px;
+  background-color: $color-green;
+  display: flex;
+  justify-content: center;
 
-.hero{
-    padding: 30px 30px 40px;
-    background-color: $color-green;
+  .inner {
+    width: 100%;
+    max-width: 950px;
+    position: relative;
+    padding-top: 2rem;
+
     display: flex;
-    justify-content: center;
+    flex-direction: column;
 
+    .title {
+      @include font-Markazi;
+      color: $color-yellow;
+      font-size: 75px;
+      line-height: 0.8;
+    }
 
-    .inner{
+    .subtitle {
+      @include font-Markazi;
+      font-size: 45px;
+      color: $color-highlignt-light;
+      margin-bottom: 20px;
+    }
 
-       width:100%;
-       max-width: 950px;
-       position: relative;
-       padding-top: 2rem;
+    .description {
+      @include font-Karla;
+      font-size: 20px;
+      color: $color-highlignt-light;
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 40px;
+    }
 
-      .title{
-        @include font-Markazi;
-        color: $color-yellow;
-        font-size: 75px;
+    .image {
+      position: absolute;
+      width: 400px;
+      height: 450px;
+      overflow: hidden;
+      border-radius: 16px;
+
+      right: -2rem;
+      top: -1rem;
+
+      img {
+        position: relative;
+        bottom: 50px;
+        width: 100%;
+        border-radius: 16px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .hero {
+    .inner {
+      .image {
+        margin-right: 50px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .hero {
+    .inner {
+      .image {
+        width: 300px;
+        height: 450px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .hero {
+    .inner {
+      .title {
+        font-size: 55px;
         line-height: 0.8;
       }
 
-      .subtitle{
-        @include font-Markazi;
-        font-size: 45px;
-        color:$color-highlignt-light;
-        margin-bottom: 20px;
+      align-items: center;
+      .image {
+        position: static;
+        margin: 0;
       }
-
-      .description{
-        @include font-Karla;
-        font-size: 20px;
-        color:$color-highlignt-light;
-        width:100%;
-        max-width: 400px;
-        margin-bottom: 40px;
-
-      }
-
-
-      .image{
-        width: 400px;
-        height: 450px;
-        position: absolute;
-        overflow: hidden;
-        border-radius: 16px;
-
-        right: -2rem;
-        top:-1rem;
-
-        img{
-            position: relative;
-            bottom: 50px;
-            width: 100%;
-        }
     }
-
-    }
+  }
 }
-
-
-
