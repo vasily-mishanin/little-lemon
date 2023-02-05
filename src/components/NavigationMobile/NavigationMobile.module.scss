@@ -1,0 +1,57 @@
+@import "../../base.scss";
+
+.nav {
+  position: absolute;
+  top: 110px;
+  right: 0;
+  z-index: 30;
+  width: 230px;
+  padding: 2rem;
+  background-color: $color-green;
+  border: 1px solid $color-yellow;
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+
+  transition: all 0.5s ease;
+
+  @include font-Karla;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.item {
+  text-align: center;
+}
+
+.link {
+  color: $color-highlignt-light;
+  &:hover {
+    color: $color-yellow;
+  }
+}
+
+.activeLink {
+  color: $color-yellow;
+  text-decoration: underline;
+}
+
+// @media (max-width: 890px) {
+//   .nav {
+//     @include font-Karla;
+//     font-weight: bold;
+//     font-size: 15px;
+//   }
+// }
+
+// @media (max-width: 767px) {
+//   .nav {
+//     display: none;
+//   }
+// }

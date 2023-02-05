@@ -8,15 +8,16 @@ export default function Hero() {
       <div className={classes.inner}>
         <h1 className={classes.title}>Little Lemon</h1>
         <h2 className={classes.subtitle}> Chicago</h2>
+
+        <div className={classes.image}>
+          <img src={RestFood} alt="restourant food" />
+        </div>
+
         <p className={classes.description}>
           We are family owned Mediterranean restaurant focused on traditional
           recipes served with a modern twist.
         </p>
         <ButtonCTA text="Reserve a table" />
-
-        <div className={classes.image}>
-          <img src={RestFood} alt="restourant food" />
-        </div>
       </div>
     </div>
   );

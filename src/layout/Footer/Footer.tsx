@@ -8,57 +8,49 @@ import Navigation from "../../components/Navigation/Navigation";
 import { siteLinks } from "../../model/constants";
 
 export default function Footer() {
-  const { pathname } = useLocation();
+  return (
+    <footer className={classes.footer}>
+      <div className={classes.inner}>
+        <div className={classes.logo}>
+          <img src={LogoFooter} alt="little lemon logo" />
+        </div>
 
-  if (pathname === "/") {
-    return (
-      <footer className={classes.footer}>
-        <div className={classes.inner}>
-          <div className={classes.logo}>
-            <img src={LogoFooter} alt="little lemon logo" />
+        <Navigation
+          links={siteLinks}
+          direction="column"
+          gap="0.3rem"
+          color="#edefee"
+          weight="500"
+          display="block"
+          fontSize="20px"
+        />
+
+        <div className={classes.info}>
+          <div className={classes.socials}>
+            <a href="https://www.facebook.com/thelittlelemonkitchen/">
+              <img src={FacebookIcon} alt="facebook" />
+            </a>
+            <a href="https://www.instagram.com/littlelemongtx/?hl=en">
+              <img src={InstagramIcon} alt="instagram" />
+            </a>
+            <a href="https://web.telegram.org">
+              <img src={TelegramIcon} alt="telegram" />
+            </a>
           </div>
 
-          <Navigation
-            links={siteLinks}
-            direction="column"
-            gap="0.3rem"
-            color="#edefee"
-            weight="500"
-          />
+          <div className={classes.contacts}>
+            <a href="https://goo.gl/maps/fBzX8uLvbwXE22UL6" target="_blank">
+              <address>Address: Michigan Ave Suite L3-03, Chicago, IL </address>
+            </a>
 
-          <div className={classes.info}>
-            <div className={classes.socials}>
-              <a href="https://www.facebook.com/thelittlelemonkitchen/">
-                <img src={FacebookIcon} alt="facebook" />
-              </a>
-              <a href="https://www.instagram.com/littlelemongtx/?hl=en">
-                <img src={InstagramIcon} alt="instagram" />
-              </a>
-              <a href="https://web.telegram.org">
-                <img src={TelegramIcon} alt="telegram" />
-              </a>
-            </div>
+            <a href="tel:+13129515923">Phone number: +13129515923</a>
 
-            <div className={classes.contacts}>
-              <a href="https://goo.gl/maps/fBzX8uLvbwXE22UL6" target="_blank">
-                <address>
-                  Address: Michigan Ave Suite L3-03, Chicago, IL{" "}
-                </address>
-              </a>
-              <p>
-                <a href="tel:+13129515923">Phone number: +13129515923</a>
-              </p>
-              <p>
-                <a href="mailto:littlelemon@icloud.com">
-                  Email: littlelemon@icloud.com
-                </a>
-              </p>
-            </div>
+            <a href="mailto:littlelemon@icloud.com">
+              Email: littlelemon@icloud.com
+            </a>
           </div>
         </div>
-      </footer>
-    );
-  }
-
-  return null;
+      </div>
+    </footer>
+  );
 }

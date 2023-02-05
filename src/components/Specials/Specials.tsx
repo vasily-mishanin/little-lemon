@@ -41,6 +41,7 @@ export default function Specials() {
           <h2 className={classes.title}>This week specials! </h2>
           <ButtonCTA text="Online Menu" />
         </header>
+
         <ListSpecials dishes={data} />
       </div>
     </section>

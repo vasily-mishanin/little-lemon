@@ -8,18 +8,34 @@ type TCarouselProps = {
   children: JSX.Element[];
   cardWidth: number;
   gap: number;
+  containerWidth: number;
 };
 
-export default function Carousel({ children, cardWidth, gap }: TCarouselProps) {
+export default function Carousel({
+  children,
+  cardWidth,
+  gap,
+  containerWidth,
+}: TCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [length, setLength] = useState(children.length);
+
+  const cardsInContaner = () => {
+    const fullCardWith = cardWidth + gap;
+    const cardsNumberEstimation = Math.ceil(containerWidth / fullCardWith);
+    if (containerWidth - (fullCardWith * cardsNumberEstimation - gap) >= 0) {
+      return cardsNumberEstimation;
+    }
+    return cardsNumberEstimation - 1;
+  };
 
   useEffect(() => {
     setLength(children.length);
   }, [children]);
 
   const handleRightClick = () => {
-    if (currentIndex < (length - 1) / 2) {
+    console.log(cardsInContaner());
+    if (currentIndex < length - cardsInContaner()) {
       setCurrentIndex((prevIndex) => prevIndex + 1);
     }
   };
@@ -35,7 +51,11 @@ export default function Carousel({ children, cardWidth, gap }: TCarouselProps) {
       <div className={classes.container}>
         <div className={classes.wrapper}>
           <span className={classes.arrowLeft} onClick={handleLeftClick}>
-            <img src={ArrowLeft} alt="left"></img>
+            <img
+              src={ArrowLeft}
+              alt="left"
+              style={{ opacity: currentIndex === 0 ? "0.3" : "1" }}
+            ></img>
           </span>
           <div className={classes.contentWrapper}>
             <div
@@ -49,7 +69,14 @@ export default function Carousel({ children, cardWidth, gap }: TCarouselProps) {
             </div>
           </div>
           <span className={classes.arrowRight} onClick={handleRightClick}>
-            <img src={ArrowRight} alt="Right"></img>
+            <img
+              src={ArrowRight}
+              alt="Right"
+              style={{
+                opacity:
+                  currentIndex < length - cardsInContaner() ? "1" : "0.3",
+              }}
+            ></img>
           </span>
         </div>
       </div>
