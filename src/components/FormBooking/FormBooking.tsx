@@ -1,18 +1,20 @@
 import classes from "./FormBooking.module.scss";
-import { Formik, Field, Form, FormikHelpers } from "formik";
+import { Formik, Form, FormikHelpers } from "formik";
+import { BookingData } from "../../model/types";
+import { Input, Button, Select } from "@chakra-ui/react";
 
 interface IFormBookingProps {
-  availableTimes: string[];
+  availableTimes: string[] | undefined;
+  onDateChange: (date: string) => void;
+  onBookingSubmit: (values: BookingData) => void;
 }
 
-interface Values {
-  resDate: string;
-  resTime: string;
-  numberOfGuests: number;
-  occasion: string;
-}
-
-export default function FormBooking({ availableTimes }: IFormBookingProps) {
+export default function FormBooking({
+  availableTimes,
+  onDateChange,
+  onBookingSubmit,
+}: IFormBookingProps) {
+  console.log("FormBooking ", availableTimes);
   return (
     <Formik
       initialValues={{
@@ -21,58 +23,99 @@ export default function FormBooking({ availableTimes }: IFormBookingProps) {
         numberOfGuests: 0,
         occasion: "",
       }}
-      onSubmit={(values: Values, { setSubmitting }: FormikHelpers<Values>) => {
+      onSubmit={(
+        values: BookingData,
+        { setSubmitting }: FormikHelpers<BookingData>
+      ) => {
         setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
+          console.log(values);
+          onBookingSubmit(values);
           setSubmitting(false);
-        }, 500);
+        }, 1000);
       }}
     >
       {(formik) => (
-        <Form>
-          <label htmlFor="resDate">Date</label>
-          <Field type="date" id="resDate" name="resDate" />
+        <Form className={classes.form}>
+          <h2 className={classes.title}>
+            🍋 Enter your data to reserve a table 🍋
+          </h2>
+          <div className={classes.item}>
+            <label htmlFor="resDate">
+              Date:<sup>*</sup>
+            </label>
+            <Input
+              className={classes.input}
+              onChange={(e) => {
+                formik.handleChange(e);
+                onDateChange(e.target.value);
+              }}
+              type="date"
+              id="resDate"
+              name="resDate"
+            />
+          </div>
 
-          <label htmlFor="resTime">Time</label>
-          <Field
-            as="select"
-            name="resTime"
-            id="resTime"
-            onChange={formik.handleChange}
-            value={formik.values.resTime}
+          <div className={classes.item}>
+            <label htmlFor="resTime">
+              Time:<sup>*</sup>
+            </label>
+            <Select
+              className={classes.input}
+              as="select"
+              name="resTime"
+              id="resTime"
+              onChange={formik.handleChange}
+              value={formik.values.resTime}
+              placeholder="select time"
+            >
+              {availableTimes?.map((time) => (
+                <option key={time} value={time} data-testid="resTime">
+                  {time}
+                </option>
+              ))}
+            </Select>
+          </div>
+
+          <div className={classes.item}>
+            <label htmlFor="numberOfGuests">
+              Number of guests: <sup>*</sup>
+            </label>
+            <Input
+              className={classes.input}
+              onChange={formik.handleChange}
+              type="number"
+              id="numberOfGuests"
+              name="numberOfGuests"
+              placeholder="1"
+              min={1}
+              max={10}
+              value={formik.values.numberOfGuests}
+            />
+          </div>
+
+          <div className={classes.item}>
+            <label htmlFor="occasion">Occasion:</label>
+            <Select
+              className={classes.input}
+              onChange={formik.handleChange}
+              as="select"
+              id="occasion"
+              name="occasion"
+              value={formik.values.occasion}
+              placeholder="occation"
+            >
+              <option value="birthday">Birthday</option>
+              <option value="anniversary">Anniversary</option>
+            </Select>
+          </div>
+
+          <Button
+            className={classes.submit}
+            type="submit"
+            _hover={{ bg: "#f4ce14" }}
           >
-            {availableTimes.map((time) => (
-              <option key={time} value={time}>
-                {time}
-              </option>
-            ))}
-          </Field>
-
-          <label htmlFor="numberOfGuests">Number of guests</label>
-          <Field
-            type="number"
-            id="numberOfGuests"
-            name="numberOfGuests"
-            placeholder="1"
-            min="1"
-            max="10"
-            onChange={formik.handleChange}
-            value={formik.values.numberOfGuests}
-          />
-
-          <label htmlFor="occasion">Occasion</label>
-          <Field
-            as="select"
-            id="occasion"
-            name="occasion"
-            onChange={formik.handleChange}
-            value={formik.values.occasion}
-          >
-            <option value="birthday">Birthday</option>
-            <option value="anniversary">Anniversary</option>
-          </Field>
-
-          <button type="submit">Submit</button>
+            Submit
+          </Button>
         </Form>
       )}
     </Formik>

@@ -26,6 +26,8 @@ export default function CardSpecialDish({
           <p className={classes.price}>{price}</p>
         </div>
         <p className={classes.description}>{description}</p>
+      </div>
+      <div className={classes.cta}>
         <ButtonDelivery text="Order a delivery" />
       </div>
     </article>

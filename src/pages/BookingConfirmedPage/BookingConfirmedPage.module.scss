@@ -21,6 +21,27 @@
     background: rgba($color: $color-green, $alpha: 0.7);
     margin-bottom: 2rem;
   }
+
+  .card {
+    @include font-Karla;
+    border: 1px solid $color-yellow;
+    border-radius: 1rem;
+    padding: 2rem;
+    background: linear-gradient(
+      90deg,
+      rgba($color: $color-yellow, $alpha: 0.9),
+      rgba($color: $color-green, $alpha: 0.9)
+    );
+    color: $color-highlignt-light;
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  .detail {
+    font-weight: bold;
+    font-style: normal;
+    color: $color-highlignt-dark;
+  }
 }
 
 @media screen and (max-width: 560px) {

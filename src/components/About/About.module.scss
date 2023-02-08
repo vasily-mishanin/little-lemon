@@ -91,7 +91,7 @@
   .about {
     .inner {
       flex-direction: column;
-      height: 800px;
+      height: 900px;
 
       .text {
         width: 100%;
@@ -116,9 +116,18 @@
   }
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 620px) {
   .about {
     .inner {
+      height: 1000px;
+    }
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .about {
+    .inner {
+      height: 1100px;
       .text {
         .title {
           font-size: 55px;
@@ -129,7 +138,6 @@
         }
 
         .description {
-          font-size: 1rem;
           text-align: center;
         }
       }

@@ -3,11 +3,13 @@
 .card {
   @include font-Karla;
   width: 290px;
-  height: 440px;
+  height: 460px;
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 20px;
+  //justify-content: space-between;
+  //padding-bottom: 1rem;
 
   background-color: $color-highlignt-light;
   border-top-left-radius: 1rem;
@@ -15,24 +17,29 @@
   overflow: hidden;
 
   .image {
-    width: 100%;
+    width: inherit;
     height: 185px;
 
     img {
       width: 100%;
-      height: 100%;
-      object-position: center;
+      max-height: 100%;
+      object-fit: cover;
     }
   }
 
   .content {
-    padding: 20px;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-between;
+
+    flex-grow: 1;
 
     .details {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 25px;
+      margin-bottom: 10px;
 
       .title {
         @include font-Markazi;
@@ -50,10 +57,11 @@
     .description {
       font-size: 16px;
       color: $color-green;
-      margin-bottom: 1.5rem;
     }
+  }
 
-    .cta {
-    }
+  .cta {
+    margin: 0 auto;
+    margin-bottom: 1rem;
   }
 }
