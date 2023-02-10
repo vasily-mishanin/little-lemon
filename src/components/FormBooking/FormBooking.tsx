@@ -189,6 +189,7 @@ export default function FormBooking({
             className={classes.submit}
             type="submit"
             _hover={{ bg: "#f4ce14" }}
+            aria-label="Submit"
           >
             Submit
           </Button>

@@ -1,36 +1,7 @@
 import ButtonCTA from "../ButtonCTA/ButtonCTA";
 import classes from "./Specials.module.scss";
-import GreekSalad from "../../assets/images/greek salad.jpg";
-import Bruchetta from "../../assets/images/bruchetta.svg";
-import LemonDessert from "../../assets/images/lemon dessert.jpg";
 import ListSpecials from "../ListSpecials/ListSpecials";
-
-const data = [
-  {
-    id: "4125wefe",
-    image: GreekSalad,
-    title: "Greek salad",
-    price: "$12.99",
-    description:
-      "The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons. ",
-  },
-  {
-    id: "iojfmo3r0923ve",
-    image: Bruchetta,
-    title: "Bruchetta",
-    price: "$5.99",
-    description:
-      "Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil.",
-  },
-  {
-    id: "klklas020345",
-    image: LemonDessert,
-    title: "Lemon Dessert",
-    price: "$5.00",
-    description:
-      "This comes straight from grandma’s recipe book, every last ingredient has been sourced and is as authentic as can be imagined.",
-  },
-];
+import { specials } from "../../api/bookings";
 
 export default function Specials() {
   return (
@@ -41,7 +12,7 @@ export default function Specials() {
           <ButtonCTA text="Online Menu" link="/menu" />
         </header>
 
-        <ListSpecials dishes={data} />
+        <ListSpecials dishes={specials} />
       </div>
     </section>
   );

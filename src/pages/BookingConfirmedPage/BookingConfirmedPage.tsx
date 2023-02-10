@@ -32,7 +32,7 @@ export default function BookingConfirmedPage() {
           {bookingCtx?.state.bookings.at(-1)?.numberOfGuests}
         </p>
       </div>
-      <ButtonCTA text="⬅ Home" link="/" />
+      <ButtonCTA text="⬅ Menu" link="/menu" />
     </main>
   );
 }

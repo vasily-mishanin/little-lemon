@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchAPI, submitAPI } from "../../api/bookings";
+import { submitAPI } from "../../api/bookings";
 import FormBooking from "../../components/FormBooking/FormBooking";
 import { BookingData } from "../../model/types";
 import { ActionTypes, BookingsContext } from "../../store/bookings-context";
@@ -25,6 +25,7 @@ export default function BookingPage() {
         numberOfGuests: 1,
       },
     });
+    // eslint-disable-next-line
   }, []);
 
   const handleDateChange = (date: string) => {

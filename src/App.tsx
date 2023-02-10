@@ -8,6 +8,8 @@ import BookingConfirmedPage from "./pages/BookingConfirmedPage/BookingConfirmedP
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { ChakraProvider } from "@chakra-ui/react";
+import OrderOnline from "./pages/OrderOnline/OrderOnline";
+import Login from "./pages/Login/Login";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +18,9 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       { path: "menu", element: <Menu /> },
+      { path: "order", element: <OrderOnline /> },
       { path: "reservation", element: <BookingPage /> },
+      { path: "login", element: <Login /> },
       { path: "success", element: <BookingConfirmedPage /> },
     ],
   },
