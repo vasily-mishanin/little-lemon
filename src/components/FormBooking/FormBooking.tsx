@@ -2,6 +2,8 @@ import classes from "./FormBooking.module.scss";
 import { Formik, Form, FormikHelpers } from "formik";
 import { BookingData } from "../../model/types";
 import { Input, Button, Select } from "@chakra-ui/react";
+import { BookingsContext } from "../../store/bookings-context";
+import { useContext } from "react";
 
 interface IFormBookingProps {
   availableTimes: string[] | undefined;
@@ -14,11 +16,20 @@ export default function FormBooking({
   onDateChange,
   onBookingSubmit,
 }: IFormBookingProps) {
-  console.log("FormBooking ", availableTimes);
+  const bookingsCtx = useContext(BookingsContext);
+  let dateString = "";
+  if (bookingsCtx.state.selectedDate) {
+    let selectedDate = new Date(bookingsCtx.state.selectedDate);
+    const year = selectedDate.getFullYear();
+    const month = String(selectedDate.getMonth() + 1).padStart(2, "0");
+    const day = String(selectedDate.getDate()).padStart(2, "0");
+    dateString = `${year}-${month}-${day}`;
+  }
+
   return (
     <Formik
       initialValues={{
-        resDate: "",
+        resDate: dateString || "",
         resTime: "",
         numberOfGuests: 0,
         occasion: "",
@@ -27,11 +38,14 @@ export default function FormBooking({
         values: BookingData,
         { setSubmitting }: FormikHelpers<BookingData>
       ) => {
-        setTimeout(() => {
-          console.log(values);
-          onBookingSubmit(values);
-          setSubmitting(false);
-        }, 1000);
+        //setTimeout(() => {
+        if (!values.resDate) {
+          values.resDate = dateString;
+        }
+        console.log("TEST", values);
+        onBookingSubmit(values);
+        setSubmitting(false);
+        // }, 1000);
       }}
     >
       {(formik) => (
@@ -52,6 +66,7 @@ export default function FormBooking({
               type="date"
               id="resDate"
               name="resDate"
+              value={dateString}
             />
           </div>
 

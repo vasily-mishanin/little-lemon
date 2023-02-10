@@ -2,7 +2,7 @@ import { createContext, useReducer } from "react";
 import { fetchAPI } from "../api/bookings";
 import { BookingData } from "../model/types";
 
-export interface State {
+export interface BookingState {
   selectedDate: string;
   availableTimes: { date: string; times: string[] }[];
   bookings: BookingData[];
@@ -27,7 +27,7 @@ export interface Action {
   payload: Payload;
 }
 
-type Dispatch = (action: Action) => void;
+export type Dispatch = (action: Action) => void;
 
 const initialValue = {
   state: { selectedDate: "", availableTimes: [], bookings: [] },
@@ -35,11 +35,11 @@ const initialValue = {
 };
 
 export const BookingsContext = createContext<{
-  state: State;
+  state: BookingState;
   dispatch: Dispatch;
 }>(initialValue);
 
-const initializeState = (): State => {
+const initializeState = (): BookingState => {
   return {
     selectedDate: "",
     availableTimes: [],
@@ -47,7 +47,10 @@ const initializeState = (): State => {
   };
 };
 
-export const bookingsReducer = (state: State, action: Action): State => {
+export const bookingsReducer = (
+  state: BookingState,
+  action: Action
+): BookingState => {
   console.log("bookingsReducer");
 
   if (action.type === ActionTypes.SUBMIT_BOOKING) {
@@ -60,18 +63,17 @@ export const bookingsReducer = (state: State, action: Action): State => {
     );
 
     if (updatedItem) {
-      const prevTimes = updatedItem.times;
+      const prevTimes = [...updatedItem.times];
       updatedItem.times = prevTimes.filter((time) => time !== selectedTime);
 
       const updatedItemIndex = state.availableTimes.findIndex(
-        (i) => i.date === selectedDate
+        (item) => item.date === selectedDate
       );
       const updatedTimes = state.availableTimes;
       updatedTimes[updatedItemIndex] = updatedItem;
 
       return {
         ...state,
-        selectedDate: selectedDate,
         availableTimes: updatedTimes,
         bookings: [
           ...state.bookings,
