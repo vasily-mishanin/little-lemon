@@ -15,7 +15,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import OrderOnline from "./pages/OrderOnline/OrderOnline";
 import Login from "./pages/Login/Login";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <Main />,
