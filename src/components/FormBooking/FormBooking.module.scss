@@ -1,3 +1,64 @@
+@import "../../base.scss";
+
 .form {
-  color: blue;
+  border: 2px solid $color-yellow;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  width: 330px;
+  padding: 20px;
+  border-radius: 8px;
+  background: rgba($color: $color-green, $alpha: 0.9);
+
+  .title {
+    color: $color-highlignt-light;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    flex-shrink: 1;
+    color: $color-highlignt-light;
+    font-weight: bold;
+
+    .field {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: space-between;
+      align-items: center;
+
+      .input {
+        border: 1px solid $color-yellow;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .input[name="numberOfGuests"] {
+        width: 100px;
+      }
+    }
+
+    .error {
+      color: salmon;
+      height: 1rem;
+      font-size: 0.85rem;
+      text-align: right;
+    }
+  }
+
+  .submit {
+    background-color: $color-yellow;
+    color: $color-green;
+    border: 1px solid transparent;
+
+    &:hover {
+      cursor: pointer;
+      border-color: $color-green;
+    }
+  }
 }

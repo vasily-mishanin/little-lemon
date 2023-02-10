@@ -9,7 +9,7 @@ export default function ButtonCTA({
   link: string;
 }) {
   return (
-    <Link className={classes.button} to={link}>
+    <Link className={classes.button} to={link} aria-label={text}>
       {text}
     </Link>
   );

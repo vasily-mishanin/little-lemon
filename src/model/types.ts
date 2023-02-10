@@ -20,3 +20,10 @@ export interface ILink {
     text: string;
     anchor?:string;
 }
+
+export interface BookingData {
+    resDate: string;
+    resTime: string;
+    numberOfGuests: number;
+    occasion: string;
+  }

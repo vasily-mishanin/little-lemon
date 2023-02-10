@@ -32,8 +32,6 @@ export default function Navigation({
     return link.path === window.location.pathname.substring(1);
   };
 
-  console.log(links);
-
   return (
     <nav className={classes.nav} style={{ display, fontSize }}>
       <ul

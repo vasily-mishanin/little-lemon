@@ -1,4 +1,3 @@
-import { useLocation } from "react-router";
 import classes from "./Footer.module.scss";
 import LogoFooter from "../../assets/images/logo-footer.svg";
 import FacebookIcon from "../../assets/icons/facebook.svg";
@@ -6,14 +5,17 @@ import InstagramIcon from "../../assets/icons/instagram.svg";
 import TelegramIcon from "../../assets/icons/telegram.svg";
 import Navigation from "../../components/Navigation/Navigation";
 import { siteLinks } from "../../model/constants";
+import Logo from "../../components/Logo/Logo";
 
 export default function Footer() {
   return (
     <footer className={classes.footer}>
       <div className={classes.inner}>
-        <div className={classes.logo}>
-          <img src={LogoFooter} alt="little lemon logo" />
-        </div>
+        <Logo
+          imageSrc={LogoFooter}
+          alt="Little Lemon Restaurant"
+          width={"100px"}
+        />
 
         <Navigation
           links={siteLinks}
@@ -39,7 +41,11 @@ export default function Footer() {
           </div>
 
           <div className={classes.contacts}>
-            <a href="https://goo.gl/maps/fBzX8uLvbwXE22UL6" target="_blank">
+            <a
+              href="https://goo.gl/maps/fBzX8uLvbwXE22UL6"
+              target="_blank"
+              rel="noreferrer"
+            >
               <address>Address: Michigan Ave Suite L3-03, Chicago, IL </address>
             </a>
 

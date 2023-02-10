@@ -2,9 +2,9 @@ import { Outlet, useLocation } from "react-router";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 
-export default function Root() {
-  const location = useLocation();
+export default function Main() {
   const includedPathnames = ["/"]; //  where at to show Footer
+  const location = useLocation();
 
   return (
     <>
