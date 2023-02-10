@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import classes from "./Carousel.module.scss";
 
 import ArrowLeft from "../../assets/icons/Chevron Left.png";

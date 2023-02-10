@@ -5,7 +5,11 @@ import Menu from "./pages/Menu/Menu";
 import BookingPage from "./pages/BookingPage/BookingPage";
 import BookingConfirmedPage from "./pages/BookingConfirmedPage/BookingConfirmedPage";
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createHashRouter,
+  RouterProvider,
+} from "react-router-dom";
 
 import { ChakraProvider } from "@chakra-ui/react";
 import OrderOnline from "./pages/OrderOnline/OrderOnline";
@@ -37,3 +41,5 @@ function App() {
 }
 
 export default App;
+
+//"homepage": "https://vasily-mishanin.github.io/little-lemon",
