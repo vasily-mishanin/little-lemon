@@ -4,7 +4,7 @@
   border: 2px solid $color-yellow;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.25rem;
 
   width: 330px;
   padding: 20px;
@@ -14,26 +14,40 @@
   .title {
     color: $color-highlignt-light;
     text-align: center;
+    margin-bottom: 1rem;
   }
 
   .item {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.5rem;
+    flex-direction: column;
+    gap: 0.2rem;
     flex-shrink: 1;
     color: $color-highlignt-light;
     font-weight: bold;
 
-    .input {
-      border: 1px solid $color-yellow;
-      &:hover {
-        cursor: pointer;
+    .field {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: space-between;
+      align-items: center;
+
+      .input {
+        border: 1px solid $color-yellow;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .input[name="numberOfGuests"] {
+        width: 100px;
       }
     }
 
-    .input[name="numberOfGuests"] {
-      width: 100px;
+    .error {
+      color: salmon;
+      height: 1rem;
+      font-size: 0.85rem;
+      text-align: right;
     }
   }
 

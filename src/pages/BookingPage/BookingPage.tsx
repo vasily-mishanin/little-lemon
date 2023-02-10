@@ -22,7 +22,7 @@ export default function BookingPage() {
         availableTimes: [],
         selectedTime: "",
         occasion: "",
-        numberOfGuests: 0,
+        numberOfGuests: 1,
       },
     });
   }, []);
@@ -40,7 +40,7 @@ export default function BookingPage() {
         selectedTime: "",
         availableTimes: [""],
         occasion: "",
-        numberOfGuests: 0,
+        numberOfGuests: 1,
       },
     });
   };

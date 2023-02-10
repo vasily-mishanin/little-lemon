@@ -24,6 +24,7 @@ import {
   Dispatch,
 } from "../../store/bookings-context";
 import { fetchAPI } from "../../api/bookings";
+import { dateToYYYYMMDD } from "../../helpers/helpers";
 
 describe("BookingsPage", () => {
   test("Renders Page Heading", () => {
@@ -40,7 +41,7 @@ describe("BookingsPage", () => {
     expect(headingElement).toBeInTheDocument();
   });
 
-  test("updateTimes reducer works", () => {
+  test("updates times, reducer works", () => {
     const today = new Date().toString();
     const initialState: BookingState = {
       selectedDate: today,
@@ -99,28 +100,35 @@ describe("BookingsPage", () => {
       },
       dispatch: () => {},
     };
+
     render(
       <BookingsContext.Provider value={providerProps}>
         <BookingPage />
       </BookingsContext.Provider>,
       { wrapper: BrowserRouter }
     );
+
     const timesSelectOptions = screen.getAllByTestId("resTime");
     expect(timesSelectOptions.map((el) => el.innerHTML).join("")).toEqual(
       TIMES.join("")
     );
   });
 
-  test("Selecting Time and Submit deletes this time from certain date", async () => {
-    const DATE = "2023-02-20";
+  test("Selecting Time and Submit - delete this time from certain date", async () => {
+    let date = dateToYYYYMMDD(new Date().toDateString());
+    let date_1 = "2023-02-20";
+    const dateString = new Date(date).toDateString(); // like 2023-02-08T16:18:32.025Z
+    const VALID_DATE = new Date(dateString).toString(); // to become 2023-02-08T00:00:00.000Z
 
     const providerProps: { state: BookingState; dispatch: Dispatch } = {
       state: {
-        selectedDate: DATE,
-        availableTimes: [{ date: DATE, times: TIMES }],
+        selectedDate: VALID_DATE,
+        availableTimes: [{ date: VALID_DATE, times: TIMES }],
         bookings: [],
       },
+
       dispatch: (action) => {
+        console.log("providerProps.state ", providerProps.state);
         bookingsReducer(providerProps.state, action);
       },
     };
@@ -135,23 +143,24 @@ describe("BookingsPage", () => {
     const timeOption = screen.getByText("19:00");
     expect(timeOption).toBeInTheDocument();
 
-    const dateSelect = screen.getByLabelText(/date/i);
     const timeSelect = screen.getByLabelText(/time/i);
+    const numberOfGuestsInput = screen.getByLabelText(/number of guests/i);
     const submitBtn = screen.getByRole("button", { name: /submit/i });
 
-    const user = userEvent.setup();
-
-    user.type(dateSelect, DATE);
-    // user.selectOptions(timeSelect, ["19:00"]);
-    user.click(submitBtn);
+    await act(async () => {
+      const user = userEvent.setup();
+      await user.selectOptions(timeSelect, ["19:00"]);
+      await user.type(numberOfGuestsInput, "5");
+      await user.click(submitBtn);
+    });
 
     act(() => {
       providerProps.dispatch({
         type: ActionTypes.SUBMIT_BOOKING,
         payload: {
-          selectedDate: DATE,
+          selectedDate: VALID_DATE,
           selectedTime: "19:00",
-          numberOfGuests: 0,
+          numberOfGuests: 5,
           occasion: "",
           availableTimes: [""],
         },
