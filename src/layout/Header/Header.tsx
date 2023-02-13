@@ -6,10 +6,41 @@ import LogoImg from "../../assets/images/Logo.svg";
 import { siteLinks } from "../../model/constants";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Header() {
   const [showNavBar, setShowNavBar] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    let prevScrollPosition = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollPosition = window.scrollY;
+
+      if (!headerRef.current) {
+        return;
+      }
+
+      if (currentScrollPosition < prevScrollPosition) {
+        headerRef.current.style.transform = "translateY(0)";
+      }
+
+      if (currentScrollPosition > prevScrollPosition) {
+        headerRef.current.style.transform = "translateY(-110px)";
+      }
+
+      prevScrollPosition = currentScrollPosition;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    console.log("handleScroll");
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const showMobileNavbar = () => {
     setShowNavBar(true);
@@ -20,7 +51,7 @@ export default function Header() {
   };
 
   return (
-    <header className={classes.header} id="header">
+    <header className={classes.header} id="header" ref={headerRef}>
       <div className={classes.inner}>
         <Logo imageSrc={LogoImg} alt="Little Lemon Restaurant" />
         <Navigation links={siteLinks} direction="row" />

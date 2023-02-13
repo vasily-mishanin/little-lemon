@@ -9,7 +9,15 @@ export default function Main() {
   return (
     <>
       <Header />
-      <div style={{ flexGrow: "1", flexShrink: "0", flexBasis: "auto" }}>
+      <div
+        style={{
+          flexGrow: "1",
+          flexShrink: "0",
+          flexBasis: "auto",
+          position: "relative",
+          top: "110px",
+        }}
+      >
         <Outlet />
       </div>
       {includedPathnames.includes(location.pathname) && <Footer />}
