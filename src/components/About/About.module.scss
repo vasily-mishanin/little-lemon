@@ -5,13 +5,14 @@
   justify-content: center;
   gap: 1rem;
   padding: 40px;
+  height: auto;
 
   .inner {
     display: flex;
     position: relative;
     width: 100%;
     max-width: 950px;
-    height: 620px;
+    height: 730px;
 
     .text {
       width: 370px;
@@ -47,7 +48,7 @@
 
       .image2 {
         position: absolute;
-        bottom: 50px;
+        bottom: 120px;
         right: 180px;
       }
     }
@@ -60,9 +61,12 @@
       .images {
         .image1 {
           width: 250px;
+          top: 120px;
         }
         .image2 {
           width: 250px;
+          bottom: 140px;
+          right: 140px;
         }
       }
     }
@@ -75,12 +79,9 @@
       .images {
         .image1 {
           width: 200px;
-          top: 70px;
         }
         .image2 {
           width: 200px;
-          bottom: 100px;
-          right: 140px;
         }
       }
     }
@@ -91,7 +92,7 @@
   .about {
     .inner {
       flex-direction: column;
-      height: 900px;
+      height: 970px;
 
       .text {
         width: 100%;
@@ -119,7 +120,7 @@
 @media screen and (max-width: 620px) {
   .about {
     .inner {
-      height: 1000px;
+      height: 1100px;
     }
   }
 }
@@ -127,7 +128,7 @@
 @media screen and (max-width: 460px) {
   .about {
     .inner {
-      height: 1100px;
+      height: 1200px;
       .text {
         .title {
           font-size: 55px;
